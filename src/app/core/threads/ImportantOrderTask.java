@@ -1,5 +1,17 @@
 package app.core.threads;
 
-public class ImportantOrderTask {
+public class ImportantOrderTask implements Runnable {
 
+    //TODO -- Reminder obj
+    private String reminder;
+
+
+    public ImportantOrderTask(String reminder) {
+        this.reminder = reminder;
+    }
+
+    @Override
+    public void run() {
+
+    }
 }
