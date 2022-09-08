@@ -2,9 +2,9 @@ package app.core.services;
 
 import java.util.Scanner;
 
-public class OrderSystemMenuStatics {
+public class OrderSystemMenu {
 
-    private static Scanner scan = new Scanner(System.in);
+    private static final Scanner SCAN = new Scanner(System.in);
 
     protected static void greetings() {
 
@@ -47,19 +47,20 @@ public class OrderSystemMenuStatics {
             System.out.println("To view orders enter 2");
             System.out.println("To quit the system enter 3");
 
-            // TODO -- Implement scanner correctly
             String inStr;
-
-            inStr = scan.nextLine();
+            inStr = SCAN.nextLine();
 
             try {
                 inInt = Integer.parseInt(inStr);
                 if (inInt == 1 || inInt == 2 || inInt == 3)
                     valid = true;
-                else
+                else {
+                    System.out.println();
                     System.out.println("Don't know what that means, please enter 1, 2 or 3 to continue.");
+                }
             } catch (NumberFormatException e) {
-                System.out.println("Something went wrong, try again.");
+                System.out.println();
+                System.out.println("Don't know what that means, please enter 1, 2 or 3 to continue.");
                 // TODO -- Implement a system to send the user to type in again until he inserts a correct value
             }
 

@@ -2,8 +2,8 @@ package app.core.services;
 
 import app.core.entities.Order;
 import app.core.threads.OrderTask;
+import static app.core.services.OrderSystemMenu.*;
 
-import java.util.Scanner;
 import java.util.Set;
 
 public final class OrderSystem {
@@ -14,6 +14,7 @@ public final class OrderSystem {
 
     // Creates the object
     private OrderSystem() {
+        orderMenu();
     }
 
     // Returns the instance and creates an object if one does not exist
@@ -28,10 +29,7 @@ public final class OrderSystem {
     private OrderTask task;
 
     public boolean addOrder(Order order) {
-        if (orders.add(order))
-            return true;
-        else
-            return false;
+        return orders.add(order);
     }
 
     //TODO -- Return orders in a better way
@@ -44,7 +42,8 @@ public final class OrderSystem {
      */
     public void orderMenu() {
 
-        OrderSystemMenuStatics.greetings();
+        greetings();
+        int option = mainMenu();
 
     }
 
