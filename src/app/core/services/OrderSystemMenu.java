@@ -6,7 +6,12 @@ public class OrderSystemMenu {
 
     private static final Scanner SCAN = new Scanner(System.in);
 
-    protected static void greetings() {
+    // TODO -- Fix timing of printing to be more satisfying
+
+    /**
+     * Greets the user
+     * */
+    protected static void greetingsMenu() {
 
         switch ((int) (Math.random() * 5)) {
             case 0 -> System.out.println("Welcome pedro, this is the new order what do you wish to order?");
@@ -26,8 +31,16 @@ public class OrderSystemMenu {
                             "Although, if you do feel alarm, try to hold onto that feeling because that is the " +
                             "proper reaction to being told you have brain damage.");
         }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ignored) {}
+
     }
 
+    /**
+     * The main menu of the app
+     * */
     protected static int mainMenu() {
 
         // TODO -- change if you can to uninitialized
@@ -67,5 +80,26 @@ public class OrderSystemMenu {
         }
 
         return inInt;
+    }
+
+    /**
+     * What to do when the user chooses to add order
+     * */
+    protected static void addOrderMenu() {
+
+    }
+
+    /**
+     * What to do when the user chooses to view order
+     * */
+    protected static void viewOrderMenu() {
+
+    }
+
+    /**
+     * What to do when the user chooses to quit program
+     * */
+    protected static void  quitMenu() {
+
     }
 }

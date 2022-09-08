@@ -2,6 +2,7 @@ package app.core.services;
 
 import app.core.entities.Order;
 import app.core.threads.OrderTask;
+
 import static app.core.services.OrderSystemMenu.*;
 
 import java.util.Set;
@@ -38,13 +39,24 @@ public final class OrderSystem {
     }
 
     /**
-     * The main menu
+     * The user's menu
      */
     public void orderMenu() {
 
-        greetings();
-        int option = mainMenu();
+        greetingsMenu();
+        boolean quit = false;
 
+        while (!quit) {
+
+
+            int opt = mainMenu();
+
+            switch (opt) {
+                case 1 -> addOrderMenu();
+                case 2 -> viewOrderMenu();
+                case 3 -> quitMenu(); // TODO -- Add a quit boolean to turn true when chose to quit
+            }
+        }
     }
 
 
