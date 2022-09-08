@@ -52,7 +52,8 @@ public class OrderSystemMenuStatics {
         try {
             inInt = Integer.parseInt(inStr);
         } catch (NumberFormatException e) {
-
+            System.out.println("Something went wrong, try again.");
+            // TODO -- Implement a system to send the user to type in again until he inserts a correct value
         }
 
 
