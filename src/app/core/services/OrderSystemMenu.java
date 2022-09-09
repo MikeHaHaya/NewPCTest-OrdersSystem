@@ -33,7 +33,7 @@ public class OrderSystemMenu {
         }
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException ignored) {}
 
     }
@@ -49,16 +49,10 @@ public class OrderSystemMenu {
 
         while (!valid) {
 
-
-            System.out.println(".");
-            System.out.println(".");
-            System.out.println(".");
-            System.out.println(".");
-            System.out.println(".");
-            System.out.println(".");
-            System.out.println("To add order enter 1");
-            System.out.println("To view orders enter 2");
-            System.out.println("To quit the system enter 3");
+                dots();
+                System.out.println("To add order enter 1");
+                System.out.println("To view orders enter 2");
+                System.out.println("To quit the system enter 3");
 
             String inStr;
             inStr = SCAN.nextLine();
@@ -87,6 +81,16 @@ public class OrderSystemMenu {
      * */
     protected static void addOrderMenu() {
 
+        // TODO -- Make a bucket of sentences that the user will see randomly
+        System.out.println("So another order eh?");
+        System.out.println("Alright then, let's get into it...");
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ignored) {}
+
+        dots();
+
     }
 
     /**
@@ -101,5 +105,28 @@ public class OrderSystemMenu {
      * */
     protected static void  quitMenu() {
 
+    }
+
+    /**
+     * Just some dots to make spaces and to avoid code from repeating itself.
+     * */
+    protected  static void dots() {
+
+        try {
+
+            System.out.println(".");
+            Thread.sleep(300);
+            System.out.println(".");
+            Thread.sleep(300);
+            System.out.println(".");
+            Thread.sleep(300);
+            System.out.println(".");
+            Thread.sleep(300);
+            System.out.println(".");
+            Thread.sleep(300);
+            System.out.println(".");
+            Thread.sleep(300);
+
+        } catch (InterruptedException ignored) {}
     }
 }
