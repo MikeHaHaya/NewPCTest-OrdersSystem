@@ -88,8 +88,30 @@ public class OrderSystemMenu {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException ignored) {}
-
         dots();
+        // name
+        System.out.println("So what's the name of the order?");
+        String name = SCAN.nextLine();
+
+        // description
+        System.out.println("A short description? (Y/N)");
+        String answer = SCAN.nextLine();
+
+        // To make sure the user entered the right input
+        while (true) {
+
+            if (answer.equalsIgnoreCase("Y") || answer.equalsIgnoreCase("N"))
+                break;
+            else {
+                System.out.println("We kinda need an answer...");
+                System.out.println("Enter Y to give the order a short description,");
+                System.out.println("Enter N to skip.");
+                answer = SCAN.nextLine();
+            }
+        }
+
+
+
 
     }
 
