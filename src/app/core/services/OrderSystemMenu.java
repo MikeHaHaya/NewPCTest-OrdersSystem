@@ -1,5 +1,6 @@
 package app.core.services;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class OrderSystemMenu {
@@ -81,6 +82,11 @@ public class OrderSystemMenu {
      * */
     protected static void addOrderMenu() {
 
+        String name;
+        String description;
+        Calendar readyOn;
+        boolean important;
+
         // TODO -- Make a bucket of sentences that the user will see randomly
         System.out.println("So another order eh?");
         System.out.println("Alright then, let's get into it...");
@@ -91,7 +97,7 @@ public class OrderSystemMenu {
         dots();
         // name
         System.out.println("So what's the name of the order?");
-        String name = SCAN.nextLine();
+        name = SCAN.nextLine();
 
         // description
         System.out.println("A short description? (Y/N)");
@@ -110,8 +116,27 @@ public class OrderSystemMenu {
             }
         }
 
+        if (answer.equalsIgnoreCase("Y")) {
+            System.out.println("Describe your order:");
+            description = SCAN.nextLine();
+        }
 
+        Calendar cal = Calendar.getInstance();
+        System.out.println("When do you want the order to be ready?");
+        System.out.println("Let's start with a year (4 digits): ");
+        String yearStr = SCAN.nextLine();
 
+        // Create a loop that breaks when the user has entered the correct value
+
+        // Checks if it's 4 digits
+        try {
+            int yearInt = Integer.parseInt(yearStr);
+        } catch (NumberFormatException ignored) {
+            System.out.println("Fuck");
+        }
+
+        // TODO -- Change 0 to the year value
+        if (cal.get(Calendar.YEAR) == 0) {}
 
     }
 
