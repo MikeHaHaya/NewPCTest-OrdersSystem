@@ -48,13 +48,19 @@ public final class OrderSystem {
 
         while (!quit) {
 
-
             int opt = mainMenu();
 
             switch (opt) {
-                case 1 -> addOrderMenu();
-                case 2 -> viewOrderMenu();
-                case 3 -> quitMenu(); // TODO -- Add a quit boolean to turn true when chose to quit
+                case 1:
+                    addOrderMenu();
+                    break;
+                case 2:
+                    viewOrderMenu();
+                    break;
+                case 3:
+                    quitMenu();
+                    quit = true;
+                    break;
             }
         }
     }
