@@ -1,5 +1,7 @@
 package app.core.services;
 
+import app.core.exceptions.OrderMenuException;
+
 import java.util.Calendar;
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class OrderSystemMenu {
 
     /**
      * Greets the user
-     * */
+     */
     protected static void greetingsMenu() {
 
         switch ((int) (Math.random() * 5)) {
@@ -35,13 +37,14 @@ public class OrderSystemMenu {
 
         try {
             Thread.sleep(3000);
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+        }
 
     }
 
     /**
      * The main menu of the app
-     * */
+     */
     protected static int mainMenu() {
 
         // TODO -- change if you can to uninitialized
@@ -50,10 +53,10 @@ public class OrderSystemMenu {
 
         while (!valid) {
 
-                dots();
-                System.out.println("To add order enter 1");
-                System.out.println("To view orders enter 2");
-                System.out.println("To quit the system enter 3");
+            dots();
+            System.out.println("To add order enter 1");
+            System.out.println("To view orders enter 2");
+            System.out.println("To quit the system enter 3");
 
             String inStr;
             inStr = SCAN.nextLine();
@@ -79,7 +82,7 @@ public class OrderSystemMenu {
 
     /**
      * What to do when the user chooses to add order
-     * */
+     */
     protected static void addOrderMenu() {
 
         String name;
@@ -93,7 +96,8 @@ public class OrderSystemMenu {
 
         try {
             Thread.sleep(2000);
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+        }
         dots();
         // name
         System.out.println("So what's the name of the order?");
@@ -123,43 +127,71 @@ public class OrderSystemMenu {
 
         Calendar cal = Calendar.getInstance();
         System.out.println("When do you want the order to be ready?");
-        System.out.println("Let's start with a year (4 digits): ");
-        String yearStr = SCAN.nextLine();
 
-        // Create a loop that breaks when the user has entered the correct value
+        // Calender loop
+        boolean valid = false;
+        while (!valid) {
 
-        // Checks if it's 4 digits
-        int yearInt;
-        try {
-            yearInt = Integer.parseInt(yearStr);
-            if (cal.get(Calendar.YEAR) == yearInt) {
 
+            // Checks if it's 4 digits
+            try {
+
+                // Gets a year value from a user
+                System.out.println("Let's start with a year (4 digits): ");
+                String yearStr = SCAN.nextLine();
+
+                int yearInt = Integer.parseInt(yearStr);
+                if (!(cal.get(Calendar.YEAR) <= yearInt)) {
+                    throw new OrderMenuException("Illegal year, make sure the year is in the future not the past dummy.");
+                }
+
+                // Move on to get a month
+                System.out.println("A month? (2 digits): ");
+                String monthStr = SCAN.nextLine();
+                int monthInt = Integer.parseInt(monthStr);
+
+                // Checks the month is between Jan to Dec
+                if (!(monthInt >= 1 && monthInt <= 12))
+                    throw new OrderMenuException("Illegal month, make sure the month is between 1 to 12.");
+
+                // Checks the date so far is in the future
+                if (cal.get(Calendar.YEAR) == yearInt) {
+                    if (!(cal.get(Calendar.MONTH) <= monthInt - 1))
+                        throw new OrderMenuException("Illegal month, make sure you're ordering for the future, not for the past.");
+                }
+
+
+
+
+            } catch (NumberFormatException ignored) {
+                System.out.println("Characters arent valid, only numbers, come on now...");
+                System.out.println("Lets try again ok?");
+            } catch (OrderMenuException e) {
+                System.out.println(e);
+                System.out.println("Lets try again shall we?");
             }
-
-        } catch (NumberFormatException ignored) {
-            System.out.println("Fuck");
         }
 
     }
 
     /**
      * What to do when the user chooses to view order
-     * */
+     */
     protected static void viewOrderMenu() {
 
     }
 
     /**
      * What to do when the user chooses to quit program
-     * */
-    protected static void  quitMenu() {
+     */
+    protected static void quitMenu() {
 
     }
 
     /**
      * Just some dots to make spaces and to avoid code from repeating itself.
-     * */
-    protected  static void dots() {
+     */
+    protected static void dots() {
 
         try {
 
@@ -176,6 +208,7 @@ public class OrderSystemMenu {
             System.out.println(".");
             Thread.sleep(300);
 
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+        }
     }
 }
