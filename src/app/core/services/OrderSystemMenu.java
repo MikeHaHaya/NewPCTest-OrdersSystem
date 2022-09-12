@@ -160,8 +160,37 @@ public class OrderSystemMenu {
                         throw new OrderMenuException("Illegal month, make sure you're ordering for the future, not for the past.");
                 }
 
+                // Move on to get a day
+                System.out.println("What day? (2 digits): ");
+                String dayStr = SCAN.nextLine();
+                int dayInt = Integer.parseInt(dayStr);
 
+                Calendar orderDate = Calendar.getInstance();
+                orderDate.set(yearInt, monthInt-1, dayInt); // TODO -- Validate date
 
+                // Checks the date so far
+                if (orderDate.before(Calendar.getInstance()))
+                    throw new OrderMenuException("Illegal day, make sure it's a future day man");
+
+                System.out.println("Do you want to set a time as well? (Y/N)");
+                answer = SCAN.nextLine();
+
+                // To make sure the user entered the right input
+                while (true) {
+                    if (answer.equalsIgnoreCase("Y") || answer.equalsIgnoreCase("N"))
+                        break;
+                    else {
+                        System.out.println("We kinda need an answer...");
+                        System.out.println("Enter Y to give the order a time limit as well,");
+                        System.out.println("Enter N to skip.");
+                        answer = SCAN.nextLine();
+                    }
+                }
+
+                // TODO -- Help the user set a date
+                if (answer.equalsIgnoreCase("Y")) {
+                    System.out.println("Please enter the wanted time: ");
+                }
 
             } catch (NumberFormatException ignored) {
                 System.out.println("Characters arent valid, only numbers, come on now...");
