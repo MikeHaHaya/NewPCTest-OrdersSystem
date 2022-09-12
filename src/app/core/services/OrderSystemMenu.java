@@ -129,14 +129,16 @@ public class OrderSystemMenu {
         // Create a loop that breaks when the user has entered the correct value
 
         // Checks if it's 4 digits
+        int yearInt;
         try {
-            int yearInt = Integer.parseInt(yearStr);
+            yearInt = Integer.parseInt(yearStr);
+            if (cal.get(Calendar.YEAR) == yearInt) {
+
+            }
+
         } catch (NumberFormatException ignored) {
             System.out.println("Fuck");
         }
-
-        // TODO -- Change 0 to the year value
-        if (cal.get(Calendar.YEAR) == 0) {}
 
     }
 
