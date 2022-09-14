@@ -5,11 +5,18 @@ import java.util.Objects;
 
 public class Order implements Comparable {
 
-    private Calendar readyOn;
     private String name;
     private String description;
+    private Calendar readyOn;
     private boolean important;
     private boolean popped;
+
+    public Order(String name, String description, Calendar readyOn, boolean important) {
+        this.name = name;
+        this.description = description;
+        this.readyOn = readyOn;
+        this.important = important;
+    }
 
     public Order() {
     }

@@ -1,6 +1,9 @@
 package app.core.menus;
 
+import app.core.entities.Order;
 import app.core.exceptions.OrderMenuException;
+import app.core.services.OrderSystem;
+
 import static app.core.menus.AddOrderMenu.*;
 
 import java.util.Calendar;
@@ -9,6 +12,7 @@ import java.util.Scanner;
 public class OrderSystemMenu {
 
     private static final Scanner SCAN = new Scanner(System.in);
+    private static OrderSystem orderSystem = OrderSystem.getInstance();
 
     // TODO -- Fix timing of printing to be more satisfying
 
@@ -100,6 +104,11 @@ public class OrderSystemMenu {
         String description = getDescriptionInput();
         Calendar readyOn = getCalInput();
         boolean important = getImportantInput();
+
+        if (orderSystem.addOrder(new Order(name,description, readyOn, important)))
+            System.out.println("Order added successfully!!");
+        else
+            System.out.println("Something went wrong... try again.");
 
     }
 
