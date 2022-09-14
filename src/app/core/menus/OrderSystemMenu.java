@@ -99,7 +99,7 @@ public class OrderSystemMenu {
         String name = getNameInput();
         String description = getDescriptionInput();
         Calendar readyOn = getCalInput();
-        boolean important;
+        boolean important = getImportantInput();
 
     }
 

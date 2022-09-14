@@ -53,12 +53,12 @@ public class AddOrderMenu {
      * Gets the calendar (order date) input
      */
     public static Calendar getCalInput() {
+
         Calendar cal = Calendar.getInstance();
         System.out.println("When do you want the order to be ready?");
 
         // Calender loop
         while (true) {
-
 
             // Checks if it's 4 digits
             try {
@@ -81,6 +81,9 @@ public class AddOrderMenu {
                 if (!(monthInt >= 1 && monthInt <= 12))
                     throw new OrderMenuException("Illegal month, make sure the month is between 1 to 12.");
 
+                // Sets the month as an enum MONTH
+
+
                 // Checks the date so far is in the future
                 if (cal.get(Calendar.YEAR) == yearInt) {
                     if (!(cal.get(Calendar.MONTH) <= monthInt - 1))
@@ -93,7 +96,9 @@ public class AddOrderMenu {
                 int dayInt = Integer.parseInt(dayStr);
 
                 Calendar orderDate = Calendar.getInstance();
-                orderDate.set(yearInt, monthInt - 1, dayInt); // TODO -- Validate date
+                // TODO -- Suppress this stupid warning somehow even though it's stupid
+                // TODO -- Validate date
+                orderDate.set(yearInt, monthInt - 1, dayInt);
 
                 // Checks the date so far
                 if (orderDate.before(Calendar.getInstance()))
@@ -111,4 +116,29 @@ public class AddOrderMenu {
             }
         }
     }
+
+    /**
+     * Gets if order is important input
+     * */
+    public static boolean getImportantInput() {
+
+        System.out.println("Is the order important? - This will change how often we notify you (Y/N) : ");
+        String answer = SCAN.nextLine();
+
+        // To make sure the user entered the right input
+        while (true) {
+
+            if (answer.equalsIgnoreCase("Y"))
+                return true;
+            else if (answer.equalsIgnoreCase("N"))
+                return false;
+            else {
+                System.out.println("We kinda need an answer...");
+                System.out.println("Enter Y to mark the order as important,");
+                System.out.println("Enter N to mark the order as not important.");
+                answer = SCAN.nextLine();
+            }
+        }
+    }
+
 }
