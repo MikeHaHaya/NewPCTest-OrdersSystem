@@ -3,7 +3,7 @@ package app.core.services;
 import app.core.entities.Order;
 import app.core.threads.OrderTask;
 
-import static app.core.services.OrderSystemMenu.*;
+import static app.core.menus.OrderSystemMenu.*;
 
 import java.util.Set;
 
