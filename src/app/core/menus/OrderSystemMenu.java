@@ -5,6 +5,7 @@ import app.core.exceptions.OrderMenuException;
 import app.core.services.OrderSystem;
 
 import static app.core.menus.AddOrderMenu.*;
+import static app.core.menus.ViewOrderMenu.*;
 
 import java.util.Calendar;
 import java.util.Scanner;
@@ -59,9 +60,9 @@ public class OrderSystemMenu {
         while (!valid) {
 
             dots();
-            System.out.println("To add order enter 1");
-            System.out.println("To view orders enter 2");
-            System.out.println("To quit the system enter 3");
+            System.out.println("To add order enter 1. ");
+            System.out.println("To view orders enter 2. ");
+            System.out.println("To quit the system enter 3. ");
 
             String inStr;
             inStr = SCAN.nextLine();
@@ -116,6 +117,17 @@ public class OrderSystemMenu {
      * What to do when the user chooses to view order
      */
     public static void viewOrderMenu() {
+
+        System.out.println("You wanna view them now?");
+        System.out.println("Ok I guess...");
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ignored) {
+        }
+        dots();
+
+        int base = checkSearchBase();
 
     }
 
