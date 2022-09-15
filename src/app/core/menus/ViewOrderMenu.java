@@ -34,4 +34,18 @@ public class ViewOrderMenu {
             }
         }
     }
+
+    /**
+     * Searches orders by name
+     * */
+    public static void searchByName() {
+
+    }
+
+    /**
+     * Searches orders by date
+     * */
+    public static void searchByDate() {
+
+    }
 }

@@ -129,6 +129,13 @@ public class OrderSystemMenu {
 
         int base = checkSearchBase();
 
+        switch (base) {
+            case 1 -> searchByName();
+            case 2 -> searchByDate();
+            default -> System.out.println("We don't know what's that");
+        }
+
+
     }
 
     /**
