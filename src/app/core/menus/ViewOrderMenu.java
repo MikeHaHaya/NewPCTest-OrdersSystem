@@ -1,10 +1,16 @@
 package app.core.menus;
 
+import app.core.entities.Order;
+import app.core.services.OrderSystem;
+
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class ViewOrderMenu {
 
     private static final Scanner SCAN = new Scanner(System.in);
+    private static OrderSystem orderSystem = OrderSystem.getInstance();
 
 
     /**
@@ -39,6 +45,9 @@ public class ViewOrderMenu {
      * Searches orders by name
      * */
     public static void searchByName() {
+
+        HashSet<Order> orders = orderSystem.getOrders();
+
 
     }
 

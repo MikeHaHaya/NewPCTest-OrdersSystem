@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class OrderSystemMenu {
 
     private static final Scanner SCAN = new Scanner(System.in);
-    private static OrderSystem orderSystem = OrderSystem.getInstance();
+    private static final OrderSystem orderSystem = OrderSystem.getInstance();
 
     // TODO -- Fix timing of printing to be more satisfying
 

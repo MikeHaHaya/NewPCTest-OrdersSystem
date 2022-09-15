@@ -6,7 +6,6 @@ import app.core.threads.OrderTask;
 import static app.core.menus.OrderSystemMenu.*;
 
 import java.util.HashSet;
-import java.util.Set;
 
 public final class OrderSystem {
     // STATEMENTS FOR A SINGLETON CLASS
@@ -27,16 +26,16 @@ public final class OrderSystem {
         return INSTANCE;
     }
 
-    // TODO -- Make sure OrderTask thread is always update with the new orders
-    private HashSet<Order> orders = new HashSet<>();
-    private OrderTask task = new OrderTask(orders);
+    // TODO -- Make sure OrderTask thread is always updated with the new orders
+    private final HashSet<Order> orders = new HashSet<>();
+    private final OrderTask task = new OrderTask(orders);
 
     public boolean addOrder(Order order) {
         return orders.add(order);
     }
 
     //TODO -- Return orders in a better way
-    public Set<Order> getOrders() {
+    public HashSet<Order> getOrders() {
         return orders;
     }
 
