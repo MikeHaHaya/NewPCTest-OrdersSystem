@@ -15,7 +15,7 @@ public class ViewOrderMenu {
 
     /**
      * Checks how the user wants to search the order.
-     * */
+     */
     public static int checkSearchBase() {
 
         System.out.println("So how do you want to view them?");
@@ -43,18 +43,55 @@ public class ViewOrderMenu {
 
     /**
      * Searches orders by name
-     * */
+     */
     public static void searchByName() {
 
         HashSet<Order> orders = orderSystem.getOrders();
+        boolean stillSearching = true;
 
+        // A loop if the user wants to keep searching stuff
+        while (stillSearching) {
 
+            System.out.println("Enter a keyword to search by it: ");
+            String answer = SCAN.nextLine();
+
+            boolean printedSomething = false;
+            for (Order order : orders) {
+                if (order.getName().equalsIgnoreCase(answer)) {
+                    System.out.println(order);
+                    printedSomething = true;
+                }
+            }
+
+            if (!printedSomething)
+                System.out.println("Are you sure? We can't find anything like that...");
+
+            // To make sure the user entered the right input
+            while (true) {
+
+                System.out.println("Want to search again? (Y/N)");
+                answer = SCAN.nextLine();
+
+                if (answer.equalsIgnoreCase("Y") || answer.equalsIgnoreCase("N"))
+                    break;
+                else {
+                    System.out.println("We kinda need an answer...");
+                    System.out.println("Enter Y to search again,");
+                    System.out.println("Enter N to skip.");
+                    answer = SCAN.nextLine();
+                }
+            }
+
+            if (answer.equalsIgnoreCase("N"))
+                stillSearching = false;
+        }
     }
 
     /**
      * Searches orders by date
-     * */
+     */
     public static void searchByDate() {
 
     }
+
 }
