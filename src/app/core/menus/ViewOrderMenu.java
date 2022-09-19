@@ -4,13 +4,14 @@ import app.core.entities.Order;
 import app.core.services.OrderSystem;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.Set;
 
 public class ViewOrderMenu {
 
     private static final Scanner SCAN = new Scanner(System.in);
-    private static OrderSystem orderSystem = OrderSystem.getInstance();
+    private static final OrderSystem orderSystem = OrderSystem.getInstance();
 
 
     /**
@@ -91,6 +92,23 @@ public class ViewOrderMenu {
      * Searches orders by date
      */
     public static void searchByDate() {
+
+        HashSet<Order> orders = orderSystem.getOrders();
+        boolean stillSearching = true;
+
+        // A loop if the user wants to keep searching stuff
+        while (stillSearching) {
+
+            System.out.println("Enter a date to search by: ");
+            String answer = SCAN.nextLine();
+
+            boolean printedSomething = false;
+            for (Order order : orders) {
+                // if statement to compare dates
+
+            }
+
+        }
 
     }
 
