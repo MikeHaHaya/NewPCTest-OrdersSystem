@@ -14,11 +14,11 @@ public final class OrderSystem {
     private static OrderSystem INSTANCE;
     // TODO -- Make sure OrderTask thread is always updated with the new orders
     private final HashSet<Order> orders = new HashSet<>();
-    private final Thread orderTask = new Thread(new OrderTask(orders));
+    private final Thread orderTask = new Thread(new OrderTask());
 
     // Creates the object
     private OrderSystem() {
-        orderTask.start();
+
     }
 
     // Returns the instance and creates an object if one does not exist
@@ -43,6 +43,7 @@ public final class OrderSystem {
      */
     public void orderMenu() {
 
+        startThreads();
         greetingsMenu();
         boolean quit = false;
 
@@ -51,20 +52,23 @@ public final class OrderSystem {
             int opt = mainMenu();
 
             switch (opt) {
-                case 1:
-                    addOrderMenu();
-                    break;
-                case 2:
-                    viewOrderMenu();
-                    break;
-                case 3:
+                case 1 -> addOrderMenu();
+                case 2 -> viewOrderMenu();
+                case 3 -> {
                     quitMenu();
                     quit = true;
-                    break;
+                }
             }
 
         }
     }
 
+    /**
+     * Start OrderTask and ImportantOrderTask
+     * */
+    public void startThreads() {
+        orderTask.setDaemon(true);
+        orderTask.start();
+    }
 
 }
