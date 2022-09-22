@@ -32,6 +32,12 @@ public class OrderTask implements Runnable{
 
             for (Order order:orders) {
                 if (order.getReadyOn().before(now) && !order.isPopped()) {
+                    if (order.isImportant()) {
+                        Thread importantTask = new Thread(new ImportantOrderTask(order));
+                        importantTask.setDaemon(true);
+                        importantTask.start();
+                    }
+
                     System.out.println(order.getName() + "has reached it's deadline!");
                     order.setPopped(true);
                 }
