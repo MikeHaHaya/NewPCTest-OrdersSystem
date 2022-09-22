@@ -99,7 +99,7 @@ public class ViewOrderMenu {
         // A loop if the user wants to keep searching stuff
         while (stillSearching) {
 
-            System.out.println("Enter a date to search by: ");
+            System.out.println("Enter a date to search by :)");
             String answer = SCAN.nextLine();
 
             boolean printedSomething = false;

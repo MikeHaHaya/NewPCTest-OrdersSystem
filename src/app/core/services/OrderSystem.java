@@ -12,10 +12,13 @@ public final class OrderSystem {
 
     // Makes a static instance
     private static OrderSystem INSTANCE;
+    // TODO -- Make sure OrderTask thread is always updated with the new orders
+    private final HashSet<Order> orders = new HashSet<>();
+    private final Thread orderTask = new Thread(new OrderTask(orders));
 
     // Creates the object
     private OrderSystem() {
-
+        orderTask.start();
     }
 
     // Returns the instance and creates an object if one does not exist
@@ -25,10 +28,6 @@ public final class OrderSystem {
 
         return INSTANCE;
     }
-
-    // TODO -- Make sure OrderTask thread is always updated with the new orders
-    private final HashSet<Order> orders = new HashSet<>();
-    private final OrderTask task = new OrderTask(orders);
 
     public boolean addOrder(Order order) {
         return orders.add(order);
@@ -63,6 +62,7 @@ public final class OrderSystem {
                     quit = true;
                     break;
             }
+
         }
     }
 

@@ -14,7 +14,14 @@ public class OrderTask implements Runnable{
 
     @Override
     public void run() {
-
+        while (true) {
+            try {
+                Thread.sleep(1000);
+                System.out.println("OrderTask Runs");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 }
